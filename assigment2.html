@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.onload = () => {
+        let button = document.querySelector("#btn");
+
+        // Function for calculating BMI
+        button.addEventListener("click", tinh);
+      };
+      function tinh() {
+        let vay = parseInt(document.querySelector("#vay").value);
+        let time = parseInt(document.querySelector("#time").value);
+        let lai = parseInt(document.querySelector("#lai").value);
+        let resut = document.querySelector("#resut");
+        let laiSuat = lai / 100 / time;
+        let gocConlai = vay;
+        let gocHangThang = Math.floor(vay / time);
+        for (let i = 0; i < time; i++) {
+          let laiPhaiTra = Math.floor(gocConlai * laiSuat);
+          let tienTraHangThang = laiPhaiTra + gocHangThang;
+          gocConlai = gocConlai - gocHangThang;
+          resut.innerHTML =
+            resut.innerHTML +
+            `<br> Tien goc : <span>${gocConlai}</span> : goc: ${gocHangThang} : lai: ${laiPhaiTra} tong goc lai : ${
+              gocHangThang + laiPhaiTra
+            }`;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div><span>so tien vay</span> <input type="number" id="vay" />vnd</div>
+    <div>
+      <span>thoi gian vay</span> <input type="number" name="" id="time" />thang
+    </div>
+    <div><span>laiSuat</span><input type="number" id="lai" />%nam</div>
+    <div><span>ngay giai ngan</span><input type="date" /></div>
+    <button class="check" id="btn">tinh</button>
+    <div id="resut"></div>
+  </body>
+</html>
